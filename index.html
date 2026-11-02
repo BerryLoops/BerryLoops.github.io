@@ -6,7 +6,7 @@
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>BerryLoops</title>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-mv7fRQLAVqFn2DTUrE7w8bYgnsuzsRaIjGF9mS7xmbo='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-f4Z8h91tzX03mBVSWEiZwMDbUOqZqGdD0aOAHPS8bgY='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Caveat:wght@600&family=Nunito:wght@400;600;700;800&display=swap">
 <style>
@@ -179,7 +179,7 @@ footer .tagline{font-family:var(--font-hand); font-size:1.5rem; color:var(--berr
     <div class="hero-copy">
       <p class="eyebrow">Handmade crochet</p>
       <h1>Little loops, lots of love.</h1>
-      <p class="lede">Soft, cheerful crochet pieces stitched by hand, one loop at a time. Pick your favourites, send your order on WhatsApp and pay with Easypaisa.</p>
+      <p class="lede">Soft, cheerful crochet pieces stitched by hand, one loop at a time. Pick your favourites, send your order on WhatsApp and pay online.</p>
       <div class="cta-row">
         <a class="btn" href="#shop">Shop the collection</a>
         <a class="btn ghost" href="#how">How to order</a>
@@ -202,8 +202,8 @@ footer .tagline{font-family:var(--font-hand); font-size:1.5rem; color:var(--berr
     <div class="sec-head"><h2>How to order</h2></div>
     <ol class="steps">
       <li><h3>Fill your cart</h3><p>Add what you love, then open your cart. Choose the colour for each piece and enter your name, phone number, province and delivery address.</p></li>
-      <li><h3>Send your order on WhatsApp</h3><p>Tap the WhatsApp button. Your items and total are already filled in. We reply with our Easypaisa account details.</p></li>
-      <li><h3>Pay and send the screenshot</h3><p>Send the total through Easypaisa and share the screenshot in the same chat. We confirm and start packing.</p></li>
+      <li><h3>Send your order on WhatsApp</h3><p>Tap the WhatsApp button. Your items and total are already filled in. We reply with our online payment details.</p></li>
+      <li><h3>Pay and send the screenshot</h3><p>Pay the total online and share the screenshot in the same chat. We confirm and start packing.</p></li>
     </ol>
   </section>
 
@@ -214,7 +214,7 @@ footer .tagline{font-family:var(--font-hand); font-size:1.5rem; color:var(--berr
 
   <footer>
     <span class="tagline">Little loops, lots of love.</span>
-    <span>&copy; <span id="yr"></span> BerryLoops. Payments accepted via Easypaisa.</span>
+    <span>&copy; <span id="yr"></span> BerryLoops. Online payment accepted.</span>
   </footer>
 </main>
 
@@ -364,7 +364,7 @@ function orderText(d){
   var lines = cart.map(function(l){ var p = prod(l.id); return "- " + p.name + " x" + l.qty + " = " + money(p.price * l.qty) + (l.color ? " (Colour: " + l.color + ")" : ""); });
   return "Hi BerryLoops! I would like to order (ref " + orderRef + "):\n" + lines.join("\n") +
     "\nItems: " + money(total()) + "\nDelivery (" + d.province + "): " + money(fee()) + "\nTotal to pay: " + money(grand()) + "\n\nName: " + d.name + "\nPhone: " + d.phone + "\nAddress: " + d.address + ", " + d.province + (d.model && hasCover() ? "\nPhone model for cover: " + d.model : "") + (d.note ? "\nNote: " + d.note : "") +
-    "\n\nPlease send me your Easypaisa payment details.";
+    "\n\nPlease send me your online payment details.";
 }
 
 var details = {name:"", phone:"", province:"", address:"", note:"", model:""};
@@ -405,7 +405,7 @@ function renderPanel(){
       '<p>Order <strong>'+esc(orderRef)+'</strong> is ready. Tap the WhatsApp button to send it to us.</p>' +
       '<div class="pay"><span class="lbl">Amount to pay</span><span class="big">'+money(grand())+'</span>' +
         '<span class="note">Items '+money(total())+' + delivery '+money(fee())+' ('+esc(details.province)+')</span></div>' +
-      '<p class="note">We reply on WhatsApp with our Easypaisa account details. Send the amount above, then share the payment screenshot in the same chat. We start packing once we confirm it.</p>' +
+      '<p class="note">We reply on WhatsApp with our online payment details. Send the amount above, then share the payment screenshot in the same chat. We start packing once we confirm it.</p>' +
       '<div class="actions">' +
         (waOk ? '<a class="btn" id="wa" target="_blank" rel="noopener noreferrer" href="https://wa.me/'+SHOP.whatsapp+'?text='+encodeURIComponent(text)+'">Send order on WhatsApp</a>' : '') +
         '<button class="btn '+(waOk?'ghost':'')+'" type="button" id="copyOrder">Copy order details</button>' +
